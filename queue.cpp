@@ -226,7 +226,8 @@ void printMenu(){
 	printf("4. Check if queue is full\n");
 	printf("5. View how many elements are in the queue\n");
 	printf("6. View all elements in the queue\n");
-}
+	printf("7. Move all the elements in the queue to a singly linked list");
+};
 
 int main(){
 	//Bos queue olustur

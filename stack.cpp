@@ -186,6 +186,41 @@ stackElement popElementFromStack(struct stack* s){
  * 	--------------------------------------------------
  */
 
+//		Add singly linked list definition
+struct node {
+	struct stackElement data;
+	node* next;
+};
+typedef struct node* NODEPTR;
+
+NODEPTR getNode(){
+    NODEPTR p;
+    p = (NODEPTR)malloc(sizeof(struct node));
+    return p;
+};
+
+void insertAfter(NODEPTR p, stackElement data){
+    if (p == NULL) {
+		printf("Void insertion\n");
+		exit(1);
+	}
+
+    NODEPTR q;
+	q = getNode();
+	q->data = data;
+	q->next = p->next;
+	p->next = q;
+}
+
+//      Butun node'ları yazdirma
+void printAllNodes(NODEPTR p) {
+	NODEPTR i = p;
+	while (i != NULL) {
+		printStackElement(&i->data);
+		i = i->next;
+	}
+}
+
 /**
  * 	MENU FUNCTIONS
  * 	--------------------------------------------------
@@ -200,6 +235,7 @@ void printMenu(){
 	printf("6. View how many elements are in the stack\n");
 	printf("7. Update a stack element\n");
 	printf("8. View all items in the stack\n");
+	printf("9. Move all the items to a singly linked list\n");
 }
 
 int main(){
@@ -324,8 +360,25 @@ int main(){
 				}
 			}
 			case 8:{
-
 				printAllStackElements(&s);
+				break;
+			}
+			case 9:{
+				NODEPTR head;
+				head = getNode();
+
+				head->data = popElementFromStack(&s);
+				head->next = NULL;
+
+				for(int i = 0; i <= s.top; i++){
+					NODEPTR temp = NULL;
+					temp = head;
+					while (temp->next != NULL) {
+						temp = temp->next;
+					}
+					insertAfter(temp, popElementFromStack(&s));
+				};
+				printAllNodes(head);
 				break;
 			}
 		}
