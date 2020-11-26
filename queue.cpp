@@ -126,7 +126,7 @@ queueElement peek(struct queue*q, int position){
 	return q->elements[position];
 }
 
-//		Herhangi bir stack elementini ekrana yazdirma
+//		Herhangi bir queue elementini ekrana yazdirma
 void printQueueElement(queueElement *qe){
 	switch(qe->type){
 		case 1:
@@ -229,7 +229,7 @@ void printMenu(){
 }
 
 int main(){
-	//Bos stack olustur
+	//Bos queue olustur
 	struct queue q;
     q.rear = -1;
     q.front = -1;
@@ -301,7 +301,7 @@ int main(){
 				}
 			}
 			case 5:{
-				printf("There are %d elements in the stack", (q.rear - q.front) + 1);
+				printf("There are %d elements in the queue", (q.rear - q.front) + 1);
 				break;
 			}
 			case 6:{
