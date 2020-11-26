@@ -330,38 +330,6 @@ int main(){
 			}
 		}
 	} while (option != 0);
-	
-
-	//Integer ekle
-	pushIntToStack(&s, 1);
-	pushIntToStack(&s, 2);
-	pushIntToStack(&s, 3);
-
-	//Float ekle
-	pushFloatToStack(&s, 31.52f);
-	pushFloatToStack(&s, 69.42f);
-
-	//Char ekle
-	char myWord[6] = "Yasin";
-	pushCharToStack(&s, myWord);
-
-	printf("There are %d elements in stack\n", s.top+1);
-	
-	printf("Popping last element added to the stack (top element)\n");
-
-	//En ustteki elemani sil
-	struct stackElement se = popElementFromStack(&s);
-	printf("Element on top is:");
-	printStackElement(&se);
-	
-	printf("There are %d elements in stack\n", s.top+1);
-	//Stackteki elemanlari yazdir
-	for(int i = 0; i <= s.top; i++){
-		printStackElement(&s.elements[s.top - i]);
-	}
-
-	printAllStackElements(&s);
-
 
 	return 0;
 }
